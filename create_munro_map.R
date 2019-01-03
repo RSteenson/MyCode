@@ -3,8 +3,9 @@ library(leaflet)
 library(rgdal)
 library(sp)
 
-# Set 'summited' colour
+# Set map colours
 todo_col <- "#01A194"
+done_col <- "#ffd11a"
 
 # Load shapefile
 ukmap <- readOGR("data", "GBR_adm1")
@@ -39,9 +40,9 @@ leaflet() %>%
   addCircleMarkers(data=munros, label=munros$map_lab, color="black", weight=1, # Add circles for incomplete munros
                    radius=4, fillColor=todo_col, fillOpacity=1) %>%
   addCircleMarkers(data=munro_done, label=munro_done$map_lab, color="black", weight=1, # Add circles for summitted munros
-                   radius=4, fillColor="#ffd11a", fillOpacity=1) %>%
+                   radius=4, fillColor=done_col, fillOpacity=1) %>%
   addCircleMarkers(data=city_coords, label=city_coords$lab, color="black", # Add circles for major cities
                    weight=1, radius=4, fillColor="black", fillOpacity=1) %>%
-  addLegend(position="topright", colors=c(todo_col, "#ffd11a", "black"), # Add legend in top right
+  addLegend(position="topright", colors=c(todo_col, done_col, "black"), # Add legend in top right
             labels=c("To do", "Completed!", "Cities"), opacity=1) %>%
   setView(lat=56.676790, lng=-5.012916, zoom=6) # Set view center and zoom level
