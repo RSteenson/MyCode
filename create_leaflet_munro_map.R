@@ -12,7 +12,7 @@ ukmap <- readOGR("data", "GBR_adm1")
 message("Shapefile data were extracted from the GADM database (www.gadm.org), version 2.5, July 2015. They can be used for non-commercial purposes only.  It is not allowed to redistribute these data, or use them for commercial purposes, without prior consent.")
 
 # Load data
-munro_df <- read.csv("data/munros_list.csv", stringsAsFactors=FALSE)
+munro_df <- read.csv("data/munro_list.csv", stringsAsFactors=FALSE)
 message("Munro coordinates were downloaded from http://www.haroldstreet.org.uk/")
 
 # Create a label to use on the map - "Hill name, hill height"
