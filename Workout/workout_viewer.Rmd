@@ -1,0 +1,62 @@
+---
+output: 
+  html_document:
+    theme: flatly
+---
+
+<style type="text/css">
+.main-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<center>
+<h1>Workout</h1>
+<h2><i>`r format(Sys.time(), '%A %d %B, %Y')`</i></h2>
+</center>
+
+<hr style="border: 2px solid blue;">
+
+# Warm-up
+
+```{r, echo = FALSE}
+# Generate warm-up
+warmup %>%
+  select(Exercise, Description) %>%
+  kable(col.names = NULL, escape = FALSE) %>%
+  kable_styling(bootstrap_options = "condensed", full_width = TRUE, font_size = 18) %>%
+  column_spec(1, bold = TRUE, border_right = TRUE) %>%
+  column_spec(2, italic = TRUE)
+```
+
+<hr style="border: 2px solid blue;">
+
+# Exercises
+
+```{r, echo = FALSE}
+# Generate warm-up
+workout %>%
+  mutate(n = 1:n_exercises) %>%
+  select(n, Exercise, Description) %>%
+  kable(align = c("l", "l", "l"), col.names = NULL, escape = FALSE) %>%
+  kable_styling(bootstrap_options = "condensed", full_width = TRUE, font_size = 18) %>%
+  column_spec(1, width = "1.5cm") %>%
+  column_spec(2, bold = TRUE, border_right = TRUE) %>%
+  column_spec(3, italic = TRUE)
+```
+
+<hr style="border: 2px solid blue;">
+
+# Cool-down
+
+```{r, echo = FALSE}
+# Generate warm-up
+cooldown %>%
+  select(Exercise, Description) %>%
+  kable(col.names = NULL, escape = FALSE) %>%
+  kable_styling(bootstrap_options = "condensed", full_width = TRUE, font_size = 18) %>%
+  column_spec(1, bold = TRUE, border_right = TRUE) %>%
+  column_spec(2, italic = TRUE)
+```
